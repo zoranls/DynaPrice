@@ -19,7 +19,7 @@ namespace DynaPrice
              {
                 a();
                  
-             }
+             } 
              catch (System.Exception e)
              {
                  Console.WriteLine($"Pogresan input {e}");

@@ -1,4 +1,6 @@
-﻿namespace DynaPrice
+﻿using System;
+
+namespace DynaPrice
 {
     public class Product
     {
@@ -18,6 +20,7 @@
         public decimal CalcPriceWithTax(decimal taxPercent)
         {
             decimal taxAmount = Price * (taxPercent / 100);
+            taxAmount = Math.Round(taxAmount, 2);
             decimal priceWithTax = Price + taxAmount;
             return priceWithTax;
         }
