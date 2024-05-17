@@ -26,7 +26,7 @@ namespace DynaPrice
             PriceWithTax = priceWithTax;
             return priceWithTax;
         }
-        
+
         public decimal CalcPriceWithDiscount(decimal discountPercent)
         {
             //Decimal priceWithTax = CalcPriceWithTax()
@@ -36,10 +36,13 @@ namespace DynaPrice
             return priceWithDiscount;
         }
 
-        //public decimal CalcSelectivePrice()
-        //{
+        public decimal CalcSelectivePrice(decimal price, decimal uniDiscountPercent, decimal upcDiscountPercent, string upc)
+        {
+            SelectiveDiscountCalculator selectiveCalc = new SelectiveDiscountCalculator(uniDiscountPercent, upcDiscountPercent, upc);
+            decimal SelectiveDiscount = selectiveCalc.CalculateDiscount(price);
+            return SelectiveDiscount;
+        }
 
-        //}
         public override string ToString()
         {
             return $"Name:{Name} - UPC:{UPC} - Price:{Price}{Currency} ";

@@ -14,17 +14,26 @@ namespace DynaPrice
             //Calc price with discount 
             decimal priceWithDiscount = product.CalcPriceWithDiscount(discountPercent);
 
+            //Calc Selective amount
+            decimal selectiveAmount = product.CalcSelectivePrice(product.Price,15,7,"12345");
+
             //Calc tax amount
             decimal taxAmount = priceWithTax - product.Price;
 
             //Calc discount amount
             decimal discountAmount = product.PriceWithTax - priceWithDiscount;
 
+            //Calc Selective amount discount
+            decimal selectiveDiscount = product.PriceWithTax - selectiveAmount;
+
             //Print Report
             Console.WriteLine($"Tax={taxPercent}%, Discount={discountPercent}%");
             Console.WriteLine($"Cost = {product.Price:C}");
             Console.WriteLine($"Tax = {taxAmount:C}");
             Console.WriteLine($"Discounts = {discountAmount:C}");
+            Console.WriteLine($"Selective Amount = {selectiveAmount:C}");
+            Console.WriteLine($"Selective Discount = {selectiveDiscount:C}");
+
 
             if (discountAmount > 0)
             {
