@@ -35,6 +35,11 @@ namespace DynaPrice
             decimal priceWithDiscount = PriceWithTax - discountAmount;
             return priceWithDiscount;
         }
+
+        //public decimal CalcSelectivePrice()
+        //{
+
+        //}
         public override string ToString()
         {
             return $"Name:{Name} - UPC:{UPC} - Price:{Price}{Currency} ";

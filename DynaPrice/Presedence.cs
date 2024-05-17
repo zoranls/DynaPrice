@@ -6,6 +6,6 @@ namespace DynaPrice
 {
     public class Presedence
     {
-        
+
     }
 }
