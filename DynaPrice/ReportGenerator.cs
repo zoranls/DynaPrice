@@ -9,13 +9,13 @@ namespace DynaPrice
         public static void GenerateReport(Product product, decimal taxPercent, decimal discountPercent)
         {
             //Calc price with tax
-           decimal priceWithTax = product.CalcPriceWithTax(taxPercent);
+            decimal priceWithTax = product.CalcPriceWithTax(taxPercent);
 
             //Calc price with discount 
             decimal priceWithDiscount = product.CalcPriceWithDiscount(discountPercent);
 
             //Calc Selective amount
-            decimal selectiveAmount = product.CalcSelectivePrice(product.Price,15,7,"12345");
+            decimal selectiveAmount = product.CalcSelectivePrice(product.Price, 15, 7, "12345");
 
             //Calc tax amount
             decimal taxAmount = priceWithTax - product.Price;
