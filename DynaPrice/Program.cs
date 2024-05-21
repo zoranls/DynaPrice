@@ -6,36 +6,45 @@ namespace DynaPrice
     {
         static void Main(string[] args)
         {
-            Object[,] commands = new Object[,]
+            static decimal ReadDecimalFromConsole(string prompt)
             {
-                //BROJEVI - 1 , STRINGOVI - 2 (DALJE ZA PROVERU INPUTA)
-                { "title" , 2, "Product"},
-                { "UPC", 2, "Product" },
-                { "Price", 1, "Product" },
-                { "Currency", 2, "Product" },
-                { "Tax Rate", 1, "Report" },
-                { "Discount Rate", 1, "Report"},
-            };
-
-            //  Object[] contents = new object[commands.Count];
-            void consoleCommands(string command)
-            {
-                Console.WriteLine($"Enter {command}");
-                if (true)
+                decimal value;
+                bool isValidInput = false;
+                do
                 {
+                    Console.Write(prompt);
+                    if (decimal.TryParse(Console.ReadLine(), out value))
+                    {
+                        isValidInput = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid decimal value.");
+                    }
+                } while (!isValidInput);
 
-                }
-                //Console.ReadLine();
+                return value;
             }
-            for (int i = 0; i < commands.Length / 3; i++)
-            {
-                consoleCommands(commands[i, 0].ToString());
+            Product product = new Product();
 
-            }
+            Console.WriteLine("Enter name: ");
+            product.Name = Console.ReadLine();
 
+            Console.WriteLine("Enter the product's UPC: ");
+            product.UPC = Console.ReadLine();
 
-            Product product = new Product("book", "12345", 20.25m, "USD");
-            ReportGenerator.GenerateReport(product, 20, 15);
+            product.Price = ReadDecimalFromConsole("Enter price: ");
+
+            Console.WriteLine("Enter the product's Currency: ");
+            product.Currency = Console.ReadLine();
+
+            Console.WriteLine("Enter the product's UPC: ");
+            product.UPC = Console.ReadLine();
+
+            decimal taxRate = ReadDecimalFromConsole("Enter TAX rate: ");
+            decimal discountRate = ReadDecimalFromConsole("Enter Discount rate: ");
+
+            ReportGenerator.GenerateReport(product, taxRate, discountRate);
         }
     }
 }
