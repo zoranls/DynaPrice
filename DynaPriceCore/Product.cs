@@ -10,7 +10,8 @@ namespace DynaPrice
         public string Currency { get; set; }
         public decimal PriceWithTax;
 
-        public Product() { }
+        public Product()
+        { }
         public Product(string name, string upc, decimal price, string currency) 
         {
             Name = name;

@@ -1,0 +1,33 @@
+﻿  Object[,] commands = new Object[,]
+            {
+                //BROJEVI - 1 , STRINGOVI - 2 (DALJE ZA PROVERU INPUTA)
+                { "title" , 2, "Product"},
+                { "UPC", 2, "Product" },
+                { "Price", 1, "Product" },
+                { "Currency", 2, "Product" },
+                { "Tax Rate", 1, "Report" },
+                { "Discount Rate", 1, "Report"},
+            };
+
+            Object[] contents = new object[commands.Length / 3];
+            int counterForObjects = 0;
+            void consoleCommands(string command, int type)
+            {
+                Console.WriteLine($"Enter {command}");
+                try
+                {
+                    if (type == 1) contents[counterForObjects] = Convert.ToDouble(Console.ReadLine());
+                    else contents[counterForObjects] = Console.ReadLine(); 
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Input mistake, {e}!");
+                    counterForObjects--;
+                    consoleCommands();
+                }
+                counterForObjects++;
+            }
+            for (int i = 0; i < commands.Length / 3; i++)
+            {
+                consoleCommands(commands[i, 0].ToString(), Convert.ToInt32(commands[i, 1]));
+            }
