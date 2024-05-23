@@ -15,9 +15,16 @@ namespace DynaPrice
             decimal priceWithDiscount = product.CalcPriceWithDiscount(discountPercent);
 
             //Calc Selective amount
-            
-            decimal selectiveAmount = product.CalcSelectivePrice(product.Price, discountPercent, 7, product.UPC);
-
+            decimal UPCpercent(string UPC)
+            {
+                if (UPC == "12345")
+                {
+                    return 7;
+                }
+                Random r = new Random();
+                return Convert.ToDecimal(r.Next(2, 25));
+            } 
+            decimal selectiveAmount = product.CalcSelectivePrice(product.Price, discountPercent, UPCpercent(product.UPC), product.UPC);
             //Calc tax amount
             decimal taxAmount = priceWithTax - product.Price;
 
